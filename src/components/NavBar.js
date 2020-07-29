@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import logo from "../images/logo.svg";
 import "./styles/NavBar.css";
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
     return (
       <header className="Navbar">
         <div className="container-fluid">
-          <a href="/" className="Navbar__brand">
+          <Link to="/" className="Navbar__brand">
             <img
               className="Navbar__brand-logo"
               src={logo}
@@ -15,7 +16,7 @@ class NavBar extends Component {
             />
             <span className="font-weight-ligth">Platzi</span>
             <span className="font-weight-bold">Conf</span>
-          </a>
+          </Link>
         </div>
       </header>
     );
