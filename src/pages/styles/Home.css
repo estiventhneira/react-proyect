@@ -1,10 +1,25 @@
 .Home__bg {
-  height: 100vh;
+  height: calc(100vh - 60px);
   width: 100%;
   background: url("../../images/stars.svg"), #1b1b25;
 }
 
-.Home__bg img {
-  height: 500px;
-  width: 500px;
+.star-now-button {
+  padding: 7px 37px;
+  margin-top: 7px;
+}
+
+.Home__bg .col-4 img {
+  height: 280px;
+  width: 300px;
+  margin-top: -70px;
+}
+
+.Home__bg .col-8 img {
+  height: 570px;
+  width: 570px;
+}
+
+.Home-izq {
+  color: white;
 }
