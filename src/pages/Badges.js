@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/Badges.css";
 import logoHeader from "../images/badge-header.svg";
+import Loading from "../components/Loading";
 
 import BadgesListItem from "../components/BadgesListItem";
 import { Link } from "react-router-dom";
@@ -43,7 +44,11 @@ class Badges extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return "loading";
+      return <Loading />;
+    }
+
+    if (this.state.error) {
+      return "Error";
     }
     return (
       <React.Fragment>

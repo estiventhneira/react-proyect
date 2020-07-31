@@ -3,6 +3,9 @@ import "./styles/BadgesListItem.css";
 
 class BadgesListItem extends React.Component {
   render() {
+    if (this.props.badges.length === 0) {
+      return "ho hay badges";
+    }
     return (
       <ul className="list-unstyled">
         {this.props.badges.map((Badge) => {
