@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import header from "../images/badge-header.svg";
 import "../pages/styles/BadgeNew.css";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
+import BadgeHeader from "../components/BadgeHeader";
+import header from "../images/platziconf-logo.svg";
 
 class BadgesNew extends Component {
   state = {
@@ -26,18 +27,16 @@ class BadgesNew extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="BadgeNew__hero">
-          <img className="img-fluid" src={header} alt="" />
-        </div>
+        <BadgeHeader imgHeader={header} />
 
         <div className="container">
           <div className="row">
             <div className="col">
               <Badge
-                firstName={this.state.form.FirstName}
-                lastName={this.state.form.LastName}
-                jobTitle={this.state.form.JobTitle}
-                twitterUser={this.state.form.Twitter}
+                firstName={this.state.form.FirstName || "Primer Nombre"}
+                lastName={this.state.form.LastName || "Segundo Nombre"}
+                jobTitle={this.state.form.JobTitle || "Cargo"}
+                twitterUser={this.state.form.Twitter || "Twitter"}
                 AvatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
               />
             </div>

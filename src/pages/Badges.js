@@ -1,8 +1,9 @@
 import React from "react";
 import "./styles/Badges.css";
-import logoHeader from "../images/badge-header.svg";
+import logoHeader from "../images/platziconf-logo.svg";
 import Loading from "../components/Loading";
 import PageError from "../components/PageError";
+import BadgeHeader from "../components/BadgeHeader";
 
 import BadgesListItem from "../components/BadgesListItem";
 import { Link } from "react-router-dom";
@@ -54,15 +55,7 @@ class Badges extends React.Component {
     return (
       <React.Fragment>
         <div className="Badges">
-          <div className="Badges__hero">
-            <div className="Badges__container">
-              <img
-                className="Badges_conf-logo"
-                src={logoHeader}
-                alt="Conf Logo"
-              />
-            </div>
-          </div>
+          <BadgeHeader imgHeader={logoHeader} />
         </div>
 
         <div className="Badges__container">
