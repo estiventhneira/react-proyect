@@ -46,3 +46,7 @@
   font-weight: bold;
   font-style: italic;
 }
+
+.card-img {
+  max-width: 140px;
+}

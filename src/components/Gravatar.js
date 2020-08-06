@@ -2,8 +2,19 @@ import React from "react";
 import Md5 from "md5";
 
 function Gravatar(props) {
-  let email = props.email;
-  return <div></div>;
+  const email = props.email;
+  console.log(typeof email);
+
+  let hashmd5 = Md5(email);
+  return (
+    <React.Fragment>
+      <img
+        className="card-img"
+        src={`https://www.gravatar.com/avatar/${hashmd5}?d=identicon`}
+        alt="Avatar"
+      />
+    </React.Fragment>
+  );
 }
 
 export default Gravatar;

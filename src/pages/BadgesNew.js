@@ -4,16 +4,31 @@ import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
 import BadgeHeader from "../components/BadgeHeader";
 import header from "../images/platziconf-logo.svg";
+import api from "../api";
 
 class BadgesNew extends Component {
   state = {
     form: {
-      FirstName: "",
-      LastName: "",
-      JobTitle: "",
-      Email: "",
-      Twitter: "",
+      firstName: "",
+      lastName: "",
+      jobTitle: "",
+      email: "",
+      twitter: "",
     },
+  };
+
+  handleSubmit = async (e) => {
+    console.log(e);
+    e.preventDefault();
+    this.setState({ loading: true, error: null });
+
+    try {
+      await api.badges.create(this.state.form);
+      this.setState({ loading: null });
+    } catch (error) {
+      this.setState({ loading: null, error: error });
+      console.error(error);
+    }
   };
 
   handleChange = (e) => {
@@ -33,17 +48,18 @@ class BadgesNew extends Component {
           <div className="row">
             <div className="col">
               <Badge
-                firstName={this.state.form.FirstName || "Primer Nombre"}
-                lastName={this.state.form.LastName || "Segundo Nombre"}
-                jobTitle={this.state.form.JobTitle || "Cargo"}
-                twitterUser={this.state.form.Twitter || "Twitter"}
-                AvatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
+                firstName={this.state.form.firstName || "Primer Nombre"}
+                lastName={this.state.form.lastName || "Segundo Nombre"}
+                jobTitle={this.state.form.jobTitle || "Cargo"}
+                twitterUser={this.state.form.twitter || "Twitter"}
+                email={this.state.form.email}
               />
             </div>
             <div className="col">
               <BadgeForm
                 onChange={this.handleChange}
                 FormValues={this.state.form}
+                onSubmit={this.handleSubmit}
               />
             </div>
           </div>

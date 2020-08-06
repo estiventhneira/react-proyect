@@ -2,25 +2,17 @@ import React from "react";
 import "./styles/styles.css";
 
 class BadgeForm extends React.Component {
-  handleClick = (event) => {
-    console.log("boton was clicked");
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state);
-  };
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>New Attendant</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>Primer Nombre</label>
             <input
               onChange={this.props.onChange}
               type="name"
-              name="FirstName"
+              name="firstName"
               className="form-control"
               value={this.props.FormValues.FirstName}
             />
@@ -31,7 +23,7 @@ class BadgeForm extends React.Component {
             <input
               onChange={this.props.onChange}
               type="name"
-              name="LastName"
+              name="lastName"
               className="form-control"
               value={this.props.FormValues.LastName}
             />
@@ -42,9 +34,9 @@ class BadgeForm extends React.Component {
             <input
               onChange={this.props.onChange}
               type="name"
-              name="Email"
+              name="email"
               className="form-control"
-              value={this.props.FormValues.Email}
+              value={this.props.FormValues.email}
             />
           </div>
 
@@ -53,7 +45,7 @@ class BadgeForm extends React.Component {
             <input
               onChange={this.props.onChange}
               type="name"
-              name="JobTitle"
+              name="jobTitle"
               className="form-control"
               value={this.props.FormValues.JobTitle}
             />
@@ -64,16 +56,14 @@ class BadgeForm extends React.Component {
             <input
               onChange={this.props.onChange}
               type="name"
-              name="Twitter"
+              name="twitter"
               className="form-control"
               value={this.props.FormValues.Twitter}
             />
           </div>
-          <button onClick={this.handleClick} className="btn btn-primary">
-            Guardar
-          </button>
+          <button className="btn btn-primary">Guardar</button>
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }
