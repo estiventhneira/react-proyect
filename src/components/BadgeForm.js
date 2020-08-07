@@ -62,6 +62,8 @@ class BadgeForm extends React.Component {
             />
           </div>
           <button className="btn btn-primary">Guardar</button>
+
+          {this.props.error && <p>H{this.props.error.message}</p>}
         </form>
       </React.Fragment>
     );

@@ -5,9 +5,12 @@ import BadgeForm from "../components/BadgeForm";
 import BadgeHeader from "../components/BadgeHeader";
 import header from "../images/platziconf-logo.svg";
 import api from "../api";
+import Loader from "../components/Loader";
 
 class BadgesNew extends Component {
   state = {
+    loading: false,
+    error: null,
     form: {
       firstName: "",
       lastName: "",
@@ -18,13 +21,13 @@ class BadgesNew extends Component {
   };
 
   handleSubmit = async (e) => {
-    console.log(e);
     e.preventDefault();
     this.setState({ loading: true, error: null });
 
     try {
       await api.badges.create(this.state.form);
       this.setState({ loading: null });
+      this.props.history.push("/badges");
     } catch (error) {
       this.setState({ loading: null, error: error });
       console.error(error);
@@ -40,6 +43,9 @@ class BadgesNew extends Component {
     });
   };
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
     return (
       <React.Fragment>
         <BadgeHeader imgHeader={header} />
@@ -60,6 +66,7 @@ class BadgesNew extends Component {
                 onChange={this.handleChange}
                 FormValues={this.state.form}
                 onSubmit={this.handleSubmit}
+                error={this.state.error}
               />
             </div>
           </div>
