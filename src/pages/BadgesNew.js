@@ -9,7 +9,7 @@ import Loader from "../components/Loader";
 
 class BadgesNew extends Component {
   state = {
-    loading: false,
+    loading: true,
     error: null,
     form: {
       firstName: "",
@@ -62,6 +62,8 @@ class BadgesNew extends Component {
               />
             </div>
             <div className="col">
+              <h1>New Attendant</h1>
+
               <BadgeForm
                 onChange={this.handleChange}
                 FormValues={this.state.form}

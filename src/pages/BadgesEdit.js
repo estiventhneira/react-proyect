@@ -20,12 +20,29 @@ class BadgesEdit extends Component {
     },
   };
 
+  valueId = this.props.match.params.BadgeId;
+
+  componentDidMount() {
+    console.log(this.valueId);
+    this.fetchData(this.valueId);
+  }
+
+  fetchData = async (valueId) => {
+    this.setState({ loading: true, error: null });
+    try {
+      const data = await api.badges.read(valueId);
+      this.setState({ loading: false, form: data });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({ loading: true, error: null });
 
     try {
-      await api.badges.create(this.state.form);
+      await api.badges.update(this.valueId, this.state.form);
       this.setState({ loading: null });
       this.props.history.push("/badges");
     } catch (error) {
@@ -62,6 +79,8 @@ class BadgesEdit extends Component {
               />
             </div>
             <div className="col">
+              <h1>Edit Attendant</h1>
+
               <BadgeForm
                 onChange={this.handleChange}
                 FormValues={this.state.form}

@@ -3,8 +3,6 @@ import Md5 from "md5";
 
 function Gravatar(props) {
   const email = props.email;
-  console.log(typeof email);
-
   let hashmd5 = Md5(email);
   return (
     <React.Fragment>

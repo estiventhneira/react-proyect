@@ -5,7 +5,6 @@ class BadgeForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>New Attendant</h1>
         <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>Primer Nombre</label>
@@ -14,7 +13,7 @@ class BadgeForm extends React.Component {
               type="name"
               name="firstName"
               className="form-control"
-              value={this.props.FormValues.FirstName}
+              value={this.props.FormValues.firstName}
             />
           </div>
 
@@ -25,7 +24,7 @@ class BadgeForm extends React.Component {
               type="name"
               name="lastName"
               className="form-control"
-              value={this.props.FormValues.LastName}
+              value={this.props.FormValues.lastName}
             />
           </div>
 
@@ -47,7 +46,7 @@ class BadgeForm extends React.Component {
               type="name"
               name="jobTitle"
               className="form-control"
-              value={this.props.FormValues.JobTitle}
+              value={this.props.FormValues.jobTitle}
             />
           </div>
 
@@ -58,7 +57,7 @@ class BadgeForm extends React.Component {
               type="name"
               name="twitter"
               className="form-control"
-              value={this.props.FormValues.Twitter}
+              value={this.props.FormValues.twitter}
             />
           </div>
           <button className="btn btn-primary">Guardar</button>

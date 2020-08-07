@@ -16,12 +16,14 @@ class Badges extends React.Component {
     this.state = {
       error: null,
       loading: true,
-      data: [],
     };
   }
 
   componentDidMount() {
     this.fetchData();
+
+    //setInterval(this.fetchData, 15000);
+    // polling es una mala práctica esto es sólo para ejemplos didácticos
   }
 
   fetchData = async () => {
@@ -45,7 +47,7 @@ class Badges extends React.Component {
   };
 
   render() {
-    if (this.state.loading === true) {
+    if (this.state.loading === true && !this.state.data) {
       return <Loading />;
     }
 
