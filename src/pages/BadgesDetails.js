@@ -7,7 +7,6 @@ import Modal from "../components/Modal";
 
 function BadgeDetails(props) {
   const badge = props.badge;
-  console.log(props);
   return (
     <div>
       <BadgeHeader imgHeader={header}></BadgeHeader>
@@ -40,8 +39,18 @@ function BadgeDetails(props) {
                   </Link>
                 </div>
                 <div>
-                  <button className="btn btn-danger">Delete</button>
-                  <Modal isOpen={true} />
+                  <button
+                    onClick={props.onOpenModal}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                  <Modal isOpen={props.modal} onClose={props.onCloseModal}>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Mollitia in autem aliquam delectus. Error id voluptates
+                    beatae iure fuga quisquam commodi quas, illo voluptatem!
+                    Labore ut nam fugiat aut quo?
+                  </Modal>
                 </div>
               </div>
             </div>
