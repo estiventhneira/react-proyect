@@ -3,7 +3,7 @@ import BadgeHeader from "../components/BadgeHeader";
 import header from "../images/platziconf-logo.svg";
 import { Link } from "react-router-dom";
 import Badge from "../components/Badge";
-import Modal from "../components/Modal";
+import DeleteBadgeModal from "../components/DeleteBadgeModal";
 
 function BadgeDetails(props) {
   const badge = props.badge;
@@ -45,12 +45,10 @@ function BadgeDetails(props) {
                   >
                     Delete
                   </button>
-                  <Modal isOpen={props.modal} onClose={props.onCloseModal}>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Mollitia in autem aliquam delectus. Error id voluptates
-                    beatae iure fuga quisquam commodi quas, illo voluptatem!
-                    Labore ut nam fugiat aut quo?
-                  </Modal>
+                  <DeleteBadgeModal
+                    modal={props.modal}
+                    onCloseModal={props.onCloseModal}
+                  />
                 </div>
               </div>
             </div>
