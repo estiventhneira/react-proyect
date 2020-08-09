@@ -3,6 +3,7 @@ import BadgeHeader from "../components/BadgeHeader";
 import header from "../images/platziconf-logo.svg";
 import { Link } from "react-router-dom";
 import Badge from "../components/Badge";
+import Modal from "../components/Modal";
 
 function BadgeDetails(props) {
   const badge = props.badge;
@@ -40,6 +41,7 @@ function BadgeDetails(props) {
                 </div>
                 <div>
                   <button className="btn btn-danger">Delete</button>
+                  <Modal />
                 </div>
               </div>
             </div>
