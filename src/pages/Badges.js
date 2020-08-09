@@ -26,6 +26,10 @@ class Badges extends React.Component {
     // polling es una mala práctica esto es sólo para ejemplos didácticos
   }
 
+  componentWillUnmount() {
+    //clearInterval();
+  }
+
   fetchData = async () => {
     this.setState({
       loading: true,
