@@ -16,6 +16,20 @@ class BadgesDetailsContainer extends React.Component {
     this.fetchData();
   }
 
+  onDeleteBadge = async () => {
+    console.log(this.props.match.params.BadgeId);
+    this.setState({ loading: true, error: null });
+    try {
+      await api.badges.remove(this.props.match.params.BadgeId);
+      this.props.history.push("/badges");
+      this.setState({ loading: false });
+    } catch (error) {
+      console.log(error);
+      this.setState({ loading: false, error: error });
+    }
+    //api.badges.remove();
+  };
+
   onCloseModal = (e) => {
     this.setState({ isModalOpen: false });
   };
@@ -49,6 +63,7 @@ class BadgesDetailsContainer extends React.Component {
           onOpenModal={this.onOpenModal}
           badge={this.state.data}
           modal={this.state.isModalOpen}
+          onDeleteBadge={this.onDeleteBadge}
         />
       );
     }

@@ -11,8 +11,12 @@ function DeleteBadgeModal(props) {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla illo,
           eos ipsa consequuntur inventore quaerat.
         </p>
-        <button className="btn btn-danger mr-4">Delete Badge</button>
-        <button className="btn btn-primary">Cancel</button>
+        <button onClick={props.onDeleteBadge} className="btn btn-danger mr-4">
+          Delete Badge
+        </button>
+        <button onClick={props.onCloseModal} className="btn btn-primary">
+          Cancel
+        </button>
       </div>
     </Modal>
   );

@@ -7,6 +7,7 @@ import DeleteBadgeModal from "../components/DeleteBadgeModal";
 
 function BadgeDetails(props) {
   const badge = props.badge;
+  const [count, setCount] = React.useState(0);
   return (
     <div>
       <BadgeHeader imgHeader={header}></BadgeHeader>
@@ -30,6 +31,14 @@ function BadgeDetails(props) {
             <div className="d-flex align-items-center">
               <div className="">
                 <div>
+                  <button
+                    onClick={() => {
+                      setCount();
+                    }}
+                    className="btn btn-primary"
+                  >
+                    Aumentar {count}
+                  </button>
                   <Link
                     className="btn btn-primary mb-5 mt-5"
                     to={`/badges/${badge.id}/edit`}
@@ -48,6 +57,7 @@ function BadgeDetails(props) {
                   <DeleteBadgeModal
                     modal={props.modal}
                     onCloseModal={props.onCloseModal}
+                    onDeleteBadge={props.onDeleteBadge}
                   />
                 </div>
               </div>
