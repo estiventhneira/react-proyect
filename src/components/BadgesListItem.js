@@ -3,14 +3,56 @@ import "./styles/BadgesListItem.css";
 import Gravatar from "./Gravatar";
 import { Link } from "react-router-dom";
 
-class BadgesListItem extends React.Component {
-  render() {
-    if (this.props.badges.length === 0) {
-      return "ho hay badges";
-    }
+function useSearchBadges(badges) {
+  const [query, setQuery] = React.useState("");
+  const [filterBadges, setFilterBadges] = React.useState(badges);
+
+  React.useMemo(() => {
+    const results = badges.filter((badge) => {
+      return `${badge.firstName} ${badge.lastName}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+
+    setFilterBadges(results);
+  }, [badges, query]);
+
+  return { query, setQuery, filterBadges };
+}
+
+function BadgesListItem(props) {
+  const { query, setQuery, filterBadges } = useSearchBadges(props.badges);
+
+  if (filterBadges === 0) {
     return (
+      <div className="form-groups">
+        <label htmlFor="">Filter Badges</label>
+        <input
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+          value={query}
+          type="text"
+          className="form-control"
+        />
+      </div>
+    );
+  }
+  return (
+    <React.Fragment>
+      <div className="form-group">
+        <label htmlFor="">Filter Badges</label>
+        <input
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+          value={query}
+          type="text"
+          className="form-control"
+        />
+      </div>
       <ul className="list-unstyled">
-        {this.props.badges.map((Badge) => {
+        {filterBadges.map((Badge) => {
           return (
             <li className="card mb-4 shadow-sm rounded" key={Badge.id}>
               <Link
@@ -36,8 +78,8 @@ class BadgesListItem extends React.Component {
           );
         })}
       </ul>
-    );
-  }
+    </React.Fragment>
+  );
 }
 
 export default BadgesListItem;

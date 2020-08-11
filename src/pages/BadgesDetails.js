@@ -7,6 +7,7 @@ import DeleteBadgeModal from "../components/DeleteBadgeModal";
 
 function useMaxCount(max) {
   const [count, setCount] = React.useState(0);
+  console.log("hola");
 
   if (count > max) {
     setCount(0);
@@ -39,16 +40,16 @@ function BadgeDetails(props) {
           <div className="col-6">
             <h2>Actions:</h2>
             <div className="d-flex align-items-center">
-              <div className="">
-                <div>
-                  <button
-                    onClick={() => {
-                      setCount(count++);
-                    }}
-                    className="btn btn-primary"
-                  >
-                    Aumentar: {count}
-                  </button>
+              <div>
+                <button
+                  onClick={() => {
+                    setCount((count = count + 1));
+                  }}
+                  className="btn btn-primary"
+                >
+                  Aumentar: {count}
+                </button>
+                <div className="">
                   <Link
                     className="btn btn-primary mb-5 mt-5"
                     to={`/badges/${badge.id}/edit`}
