@@ -5,9 +5,19 @@ import { Link } from "react-router-dom";
 import Badge from "../components/Badge";
 import DeleteBadgeModal from "../components/DeleteBadgeModal";
 
+function useMaxCount(max) {
+  const [count, setCount] = React.useState(0);
+
+  if (count > max) {
+    setCount(0);
+  }
+
+  return [count, setCount];
+}
+
 function BadgeDetails(props) {
   const badge = props.badge;
-  const [count, setCount] = React.useState(0);
+  let [count, setCount] = useMaxCount(4);
   return (
     <div>
       <BadgeHeader imgHeader={header}></BadgeHeader>
@@ -33,11 +43,11 @@ function BadgeDetails(props) {
                 <div>
                   <button
                     onClick={() => {
-                      setCount();
+                      setCount(count++);
                     }}
                     className="btn btn-primary"
                   >
-                    Aumentar {count}
+                    Aumentar: {count}
                   </button>
                   <Link
                     className="btn btn-primary mb-5 mt-5"

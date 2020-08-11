@@ -9,7 +9,7 @@ import Loader from "../components/Loader";
 
 class BadgesNew extends Component {
   state = {
-    loading: true,
+    loading: false,
     error: null,
     form: {
       firstName: "",
